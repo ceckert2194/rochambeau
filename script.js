@@ -86,7 +86,7 @@ function game() {
             disableButton();
             // return (`You won the game! You won ${playerScore} rounds and the computer won ${computerScore}.`)
         } else if (playerScore < computerScore) {
-            document.querySelector('#output').textContent = 'The computer won the game!';
+            document.querySelector('#output').textContent = 'Computer won the game!';
             disableButton();
             // return (`You lost the game! You won ${playerScore} rounds and the computer won ${computerScore}.`)
         } else {
