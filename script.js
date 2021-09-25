@@ -123,6 +123,14 @@ rockBtn.addEventListener('click', () => {
     game();
 });
 
+rockBtn.addEventListener('mouseover', event => {
+    document.getElementById('rock').style.scale = '1.1';
+})
+
+rockBtn.addEventListener('mouseout', event =>{
+    document.getElementById('rock').style.scale = '1';
+})
+
 paperBtn.addEventListener('click', () => {
     // console.log(playRound(playerChoice='paper'));
     document.querySelector('#output').textContent = playRound(playerChoice='paper');
@@ -131,6 +139,14 @@ paperBtn.addEventListener('click', () => {
     game();
 });
 
+paperBtn.addEventListener('mouseover', event => {
+    document.getElementById('paper').style.scale = '1.1';
+})
+
+paperBtn.addEventListener('mouseout', event =>{
+    document.getElementById('paper').style.scale = '1';
+})
+
 scissorBtn.addEventListener('click', () => {
     // console.log(playRound(playerChoice='scissors'));
     document.querySelector('#output').textContent = playRound(playerChoice='scissors');
@@ -138,3 +154,12 @@ scissorBtn.addEventListener('click', () => {
     document.querySelector('#computer-results').textContent = computerScore;
     game();
 });
+
+scissorBtn.addEventListener('mouseover', event => {
+    document.getElementById('scissors').style.scale = '1.1';
+})
+
+scissorBtn.addEventListener('mouseout', event =>{
+    document.getElementById('scissors').style.scale = '1';
+})
+
