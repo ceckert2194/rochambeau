@@ -1,0 +1,11 @@
+#b {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#play {
+    margin-top: 150px;
+    height: 50px;
+    width: 100px;
+}
