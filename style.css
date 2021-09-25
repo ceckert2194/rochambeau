@@ -37,3 +37,19 @@
     text-align: center;
 }
 
+#output {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-left: 35px;
+}
+
+#reset {
+    height: 50px;
+    width: 100px;
+}
+
+#new-game {
+    height: 50px;
+    width: 100px;
+}

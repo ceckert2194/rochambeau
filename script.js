@@ -4,6 +4,8 @@ var computerScore = 0;
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorBtn = document.querySelector('#scissors');
+const ngBtn = document.querySelector('#new-game');
+const resetBtn = document.querySelector('#reset');
 
 function computerPlay() {
     choice_index = Math.floor(Math.random() * choices.length)
@@ -21,34 +23,48 @@ function playRound(playerChoice, computerChoice) {
 
     // playerChoice = playerPlay()
     computerChoice = computerPlay()
-    
+
     if (playerChoice == 'rock' && computerChoice == 'paper') {
         computerScore += 1;
-        return (`You lost, ${computerChoice} beats ${playerChoice}!`)
+        return (`Round lost!`)
     } else if (playerChoice == 'rock' && computerChoice == 'scissors') {
         playerScore += 1;
-        return (`You won, ${playerChoice} beats ${computerChoice}!`)
+        return (`Round won!`)
     } else if (playerChoice == 'rock' && computerChoice == 'rock') {
-        return ("It's a draw!")
+        return ("Draw!")
     } else if (playerChoice == 'scissors' && computerChoice == 'paper') {
         playerScore += 1;
-        return (`You won, ${playerChoice} beats ${computerChoice}!`)
+        return (`Round won!`)
     } else if (playerChoice == 'scissors' && computerChoice == 'scissors') {
-        return ("It's a draw!")
+        return ("Draw!")
     } else if (playerChoice == 'scissors' && computerChoice == 'rock') {
         computerScore += 1;
-        return (`You lost, ${computerChoice} beats ${playerChoice}!`)
+        return (`Round lost!`)
     } else if (playerChoice == 'paper' && computerChoice == 'paper') {
-        return ("It's a draw!")
+        return ("Draw!")
     } else if (playerChoice == 'paper' && computerChoice == 'scissors') {
         computerScore += 1;
-        return (`You lost, ${computerChoice} beats ${playerChoice}!`)
+        return (`Round lost!`)
     } else if (playerChoice == 'paper' && computerChoice == 'rock') {
         playerScore += 1;
-        return (`You won, ${playerChoice} beats ${computerChoice}!`)
+        return (`Round won!`)
     } else {
         return ('Not a valid choice!')
     }
+}
+
+function newGame() {
+    computerScore = 0;
+    playerScore = 0;
+    document.querySelector('#results').textContent = playerScore;
+    document.querySelector('#computer-results').textContent = computerScore;
+    document.querySelector('#output').textContent = '--';
+}
+
+function disableButton() {
+    document.getElementById('rock').disabled = true;
+    document.getElementById('paper').disabled = true;
+    document.getElementById('scissors').disabled = true;
 }
 
 function game() {
@@ -66,11 +82,13 @@ function game() {
         void(0);
     } else {
         if (playerScore > computerScore) {
-            alert('Win!')
-            return (`You won the game! You won ${playerScore} rounds and the computer won ${computerScore}.`)
+            document.querySelector('#output').textContent = 'You won the game!';
+            disableButton();
+            // return (`You won the game! You won ${playerScore} rounds and the computer won ${computerScore}.`)
         } else if (playerScore < computerScore) {
-            alert('Lost!')
-            return (`You lost the game! You won ${playerScore} rounds and the computer won ${computerScore}.`)
+            document.querySelector('#output').textContent = 'The computer won the game!';
+            disableButton();
+            // return (`You lost the game! You won ${playerScore} rounds and the computer won ${computerScore}.`)
         } else {
             return (`The game was a draw! You and the computer both won ${playerScore} rounds.`)
         }
@@ -86,22 +104,36 @@ function game() {
 //     }
 // }
 
+ngBtn.addEventListener('click', () => {
+    document.getElementById('rock').disabled = false;
+    document.getElementById('paper').disabled = false;
+    document.getElementById('scissors').disabled = false;
+    newGame();
+});
+
+resetBtn.addEventListener('click', () => {
+    newGame();
+})
+
 rockBtn.addEventListener('click', () => {
-    console.log(playRound(playerChoice='rock'));
+    // console.log(playRound(playerChoice='rock'));
+    document.querySelector('#output').textContent = playRound(playerChoice='rock');
     document.querySelector('#results').textContent = playerScore;
     document.querySelector('#computer-results').textContent = computerScore;
     game();
 });
 
 paperBtn.addEventListener('click', () => {
-    console.log(playRound(playerChoice='paper'));
+    // console.log(playRound(playerChoice='paper'));
+    document.querySelector('#output').textContent = playRound(playerChoice='paper');
     document.querySelector('#results').textContent = playerScore;
     document.querySelector('#computer-results').textContent = computerScore;
     game();
 });
 
 scissorBtn.addEventListener('click', () => {
-    console.log(playRound(playerChoice='scissors'));
+    // console.log(playRound(playerChoice='scissors'));
+    document.querySelector('#output').textContent = playRound(playerChoice='scissors');
     document.querySelector('#results').textContent = playerScore;
     document.querySelector('#computer-results').textContent = computerScore;
     game();
